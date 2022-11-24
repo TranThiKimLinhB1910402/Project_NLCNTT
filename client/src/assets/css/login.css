@@ -1,0 +1,201 @@
+
+.login-registration-style-3{
+	width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 55px 60px 60px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgb(0 0 0 / 32%);
+    background-color: white;
+}
+.heading-4 {
+    font-size: 24px;
+    line-height: 30px;
+}
+.paragraph-small {
+    font-size: 14px;
+    line-height: 20px;
+}
+.single-form {
+    margin-top: 16px;
+    position: relative;
+}
+.form-default label {
+    color: #4C4C4C;
+}
+.single-form label {
+    margin-bottom: 10px;
+    font-size: 13px;
+    margin-left: 18px;
+    font-weight: 300;
+    text-align: left !important;
+}
+label {
+    display: inline-block;
+}
+.single-form .form-input {
+    position: relative;
+}
+.login-registration-style-3 .single-form .form-input [type="password"] {
+    padding-right: 40px;
+}
+.form-default .form-input textarea, .form-default .form-input input {
+    color: #4C4C4C;
+    background-color: #EFEFEF;
+}
+
+.single-form .form-input textarea, .single-form .form-input input {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    padding-left: 40px;
+    border-radius: 4px;
+    transition: all 0.3s linear;
+    border: 1px solid transparent;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: 1.2rem;
+    line-height: inherit;
+}
+.form-default .form-input i {
+    color: #7D7D7D;
+}
+.single-form .form-input i {
+    position: absolute;
+    top: 1px;
+    left: 10px;
+    font-size: 1.2rem;
+}
+.fa-solid, .fas {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+.fs-5 {
+    font-size: 1.25rem!important;
+}
+.mt-2 {
+    margin-top: .5rem!important;
+}
+.login-registration-style-3 .forget {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    margin-top: 16px;
+}
+a, i, span {
+    display: inline-block;
+}
+a, a:focus, a:hover {
+    text-decoration: none;
+}
+.single-form {
+    margin-top: 16px;
+    position: relative;
+}
+.main-btn {
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 0;
+    padding: 0 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    z-index: 5;
+    transition: all 0.4s linear;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    background-color: transparent;
+}
+.primary-icon, .primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+@media (min-width: 768px){
+	.col-md-5 {
+    flex: 0 0 auto;
+    width: 41.66666667%;
+}
+}
+
+p {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.login-registration-style-3 ul {
+    padding-top: 10px;
+}
+ol, ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.login-registration-style-3 ul li a.facebook-login-registration {
+    background-color: #3C5898;
+    color: white;
+}
+.login-registration-style-3 ul li a {
+    display: block;
+    height: 40px;
+    width: 100%;
+    border-radius: 4px;
+    line-height: 40px;
+    color: #fff;
+    margin-top: 10px;
+    padding: 0 15px;
+    text-align: center;
+}
+a, i, span {
+    display: inline-block;
+}
+a, a:focus, a:hover {
+    text-decoration: none;
+}
+.login-registration-style-3 ul li a img, .login-registration-style-3 ul li a i {
+    float: left;
+    line-height: 40px;
+}
+.fa-brands, .fab {
+    font-family: "Font Awesome 6 Brands";
+    font-weight: 400;
+}
+.login-registration-style-3 ul li a.google-login-registration {
+    background-color: #fff;
+    color: #000;
+    box-shadow: 2px 2px 8px rgb(0 0 0 / 25%);
+}
+.login-registration-style-3 ul li a img {
+    position: relative;
+    left: -11px;
+}
+.login-registration-style-3 ul {
+    padding-top: 10px;
+}
+.login-registration-style-3 .login {
+    color: #000;
+    margin-top: 30px;
+    font-weight: 400;
+}
+.login-registration-style-3 .login a {
+    text-transform: uppercase;
+    color: #FEA116;
+    font-weight: 700;
+    margin-left: 10px;
+}

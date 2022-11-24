@@ -1,0 +1,13 @@
+[
+  {
+    "_id": "0776560825",
+    "full_name": "Linh Kim",
+    "address": "Can Tho",
+    "email": "linh@gmail.com",
+    "account": {
+      "phone": "0776560825",
+      "password": "$2b$10$.GPtfjaisOM0WZiK7dyecO3Ezr1UY42tcB1sMOlUb/zOQ/208qVha",
+      "role": 0
+    }
+  }
+]
