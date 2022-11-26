@@ -1,8 +1,8 @@
 <template>
     <div class="sidebar-admin d-flex flex-column flex-shrink-0" style="max-width: 280px;">
-        <div class="p-5">
-            logo
-        </div>
+        <!-- <div class="p-5">
+            AUTO CAR
+        </div> -->
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
                 <a href="#" class="nav-link" aria-current="page">
@@ -77,7 +77,6 @@
 <style lang="scss">
 .sidebar-admin {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background-color: white;
 
     ul {
         li {

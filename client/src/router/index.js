@@ -7,6 +7,7 @@ import ProductDetail from "@/views/ProductDetail.vue";
 import RegisterCarPage from "@/views/RegisterCarPage.vue";
 import FormConfirm from "@/views/FormConfirm.vue";
 import TablePrice from "@/views/TablePrice.vue";
+import RentHistory from "@/views/RentHistory.vue"
 //admin
 import Dashboard from "@/views/Admin/Dashboard.vue";
 import ManagerProduct from "@/views/Admin/ManagerProduct/ManagerProduct.vue";
@@ -17,6 +18,7 @@ import DetailRent from "@/views/Admin/ManagerRent/DetailRent.vue";
 import AddProduct from "@/views/Admin/ManagerProduct/AddProduct.vue";
 import AddDriver from "@/views/Admin/ManagerDriver/AddDriver.vue";
 import EditProduct from "@/views/Admin/ManagerProduct/EditProduct.vue";
+import AddRent from "@/views/Admin/ManagerRent/AddRent.vue"
 const routes = [
     
      { 
@@ -30,6 +32,7 @@ const routes = [
             { path: 'manager-product/:id', name:"edit-product", component: EditProduct, props: true},
             { path: 'manager-user', name: "manager-user", component: ManagerUser},
             { path: 'manager-rent', name: "manager-rent", component: ManagerRent},
+            { path: 'add-rent', name: "add-rent", component: AddRent},
             { path: 'manager-rent/:id', name: "detail-rent", component: DetailRent, props: true},
             { path: 'manager-driver', name: "manager-driver", component: ManagerDriver},
             { path: 'add-driver', name:"add-driver", component: AddDriver},
@@ -55,13 +58,13 @@ const routes = [
                 props: true
             },
             {
-                path: "register-car/:id",
+                path: "register-car",
                 name : "register-car",
                 component: RegisterCarPage,
                 props: true
             },
             {
-                path: "form-confirm/:id",
+                path: "products/form-confirm/:id",
                 name : "form-confim",
                 component: FormConfirm,
             },
@@ -69,6 +72,11 @@ const routes = [
                 path: "bang-gia",
                 name : "bang-gia",
                 component: TablePrice
+            },
+            {
+                path: "tra-cuu",
+                name : "tra-cuu",
+                component: RentHistory
             },
             {
                 path: "login",

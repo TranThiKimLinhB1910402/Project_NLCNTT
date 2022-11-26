@@ -1,15 +1,18 @@
 <script>
 import RentService from "../../../services/rent.service";
 import DriverService from "../../../services/driver.service";
-import moment from "moment";
 
 export default {
   data() {
     return {
       rent: {
         car: {},
-        route: {},
-        driver: {},
+          noi_khoi_hanh: {
+          quan_huyen: ""
+        },
+        loaixe: {
+          so_cho: ""
+        }
       },
       drivers: [],
     };
@@ -18,7 +21,6 @@ export default {
 
     async getDriverDay() {
       try {
-
         this.drivers = await DriverService.getDriverDay();
         console.log(this.drivers);
       } catch (error) {
@@ -96,7 +98,7 @@ export default {
         <div class="row">
           <div class="col col-8">
             <span class="me-3 fw-bold">Lộ trình: </span>
-            <span class="text-result">{{ rent.route.noi_khoi_hanh }} - {{ rent.route.noiden }}</span>
+            <span class="text-result">{{ rent.noi_khoi_hanh.quan_huyen }} - {{ rent.noiden }}</span>
           </div>
           <div class="col col-4">
             <span class="me-3 fw-bold">Ghi chú: </span>
@@ -105,24 +107,27 @@ export default {
           </div>
         </div>
       </div>
-      <div class="card-body d-flex justify-content-center">
-        <form class="w-75">
+      <div class="card-body justify-content-center">
           <table class="table table-bordered">
             <thead>
               <th colspan="2">Thông tin chi tiết</th>
             </thead>
             <tbody>
-              <tr>
+              <tr v-if="this.rent.car.ten_xe">
                 <td>Tên xe</td>
                 <td>{{ rent.car.ten_xe }}</td>
               </tr>
-              <tr>
+              <tr v-if="this.rent.car.ten_xe">
                 <td>Biển số xe</td>
                 <td>{{ rent.car.bien_so }}</td>
               </tr>
-              <tr>
+              <tr v-if="this.rent.car.ten_xe">
                 <td>Số chổ</td>
                 <td>{{ rent.car.so_cho }}</td>
+              </tr>
+              <tr v-else>
+                <td>Loại xe</td>
+                <td>{{ rent.loaixe.so_cho }}</td>
               </tr>
               <tr>
                 <td>Dịch vụ</td>
@@ -133,7 +138,6 @@ export default {
               <tr>
                 <td>Tài xế</td>
                 <td v-if="rent.ten_dichvu == 'Thuê tài xế'" class="d-flex justify-content-center">
-
                   <select v-if="!rent.isDriver" class="form-select w-50" v-model="this.rent.ten_tai_xe">
                     <template v-for="(driver, index) in drivers" :key="index">
                       <option
@@ -142,17 +146,9 @@ export default {
                         :value="driver.full_name">
                         {{ driver.full_name }}
                       </option>
-
-
                     </template>
                   </select>
                   <p v-else>{{rent.ten_tai_xe}}</p>
-                  <!-- <select v-else class="form-select w-50" v-model="this.rent.ten_tai_xe" disabled>
-                    <option v-for="driver in drivers" :value="driver.full_name">
-                      {{ driver.full_name }}
-                    </option>
-                  </select> -->
-
 
                 </td>
                 <td v-else>
@@ -173,7 +169,6 @@ export default {
               Xác nhận
             </button>
           </div>
-        </form>
       </div>
     </div>
   </div>

@@ -19,19 +19,7 @@ exports.create = async (req, res, next) => {
         );
     }
 };
-exports.getAllDate = async (req, res, next) => {
-    let documents = [];
-    try{
-        console.log('ok');
-        const carService = new CarService(MongoDB.client);
-        documents = await carService.getAllDate();
-    } catch (error){
-        return next(
-            new ApiError(500, "Error while getAll")
-        );
-    }
-    return res.send(documents);
-};
+
 exports.getAll = async (req, res, next) => {
     let documents = [];
     try{
@@ -100,6 +88,17 @@ exports.delete = async (req, res, next)=>{
         );
     }
 };
-// exports.deleteAll = (req, res) => {
-//     res.send({message: "deleteAll"});
-// }
+exports.findByBS = async (req, res, next) => {
+    try {
+      const carService = new CarService(MongoDB.client);
+      const document = await carService.getDay(req.params.bs);
+      if (!document) {
+        return next(new ApiError(404, "Contact not found"));
+      }
+      return res.send(document);
+    } catch (error) {
+      return next(
+        new ApiError(500, `Error retrieving contact with bs`)
+      );
+    }
+  };

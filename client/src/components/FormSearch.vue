@@ -1,6 +1,21 @@
+<script>
+export default {
+    data() {
+        return {
+            so_cho: 0,
+            muc_gia: 0
+        }
+    },
+    methods: {
+        handleFilter(){
+            this.$router.push()
+        }
+    }
+}
+</script>
 <template>
     <form action="" method="post">
-        <div class="card">
+        <!-- <div class="card">
             <div class="card-header">
                 DỊCH VỤ
             </div>
@@ -40,7 +55,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
         <div class="card">
             <div class="card-header">
                 SỐ CHỔ
@@ -49,7 +64,7 @@
                 <ul>
                     <li>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" @click="handleS(4)" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Xe 4 chổ
                             </label>
@@ -57,7 +72,7 @@
                     </li>
                     <li>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" @click="handleS(7)" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Xe 7 chổ
                             </label>
@@ -65,17 +80,9 @@
                     </li>
                     <li>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" @click="handleS(16)" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Xe 16 chổ
-                            </label>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Xe 32 chổ
                             </label>
                         </div>
                     </li>
@@ -90,8 +97,8 @@
                 <ul>
                     <li>
                         <div class="form-check">
-                            <input class="form-check-input" checked type="radio" name="flexRadioDefault"
-                                id="flexRadioDefault1">
+                            <input class="form-check-input" checked type="radio" @click="handleM(1)"
+                                name="flexRadioDefault" id="flexRadioDefault1">
                             <label class="form-check-label" for="flexRadioDefault1">
                                 500.000 - 1.000.000 đ
                             </label>
@@ -100,7 +107,8 @@
                     </li>
                     <li>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" @click="handleM(2)"
+                                id="flexRadioDefault2">
                             <label class="form-check-label" for="flexRadioDefault2">
                                 1.000.000 - 2.000.000 đ
                             </label>
@@ -109,7 +117,8 @@
                     </li>
                     <li>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" @click="handleM(3)"
+                                id="flexRadioDefault3">
                             <label class="form-check-label" for="flexRadioDefault3">
                                 2.000.000 - 3.000.000 đ
                             </label>
@@ -117,7 +126,8 @@
                     </li>
                     <li>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" @click="handleM(4)"
+                                id="flexRadioDefault4">
                             <label class="form-check-label" for="flexRadioDefault4">
                                 Trên 3.000.000 đ
                             </label>
@@ -128,7 +138,7 @@
 
             </div>
         </div>
-        <div class="card">
+        <!-- <div class="card">
             <div class="card-header">
                 LOẠI MÁY
             </div>
@@ -136,7 +146,7 @@
                 <ul>
                     <li>
                         <div class="form-check">
-                            <input class="form-check-input" checked type="radio" name="flexRadioDefault"
+                            <input class="form-check-input"  checked type="radio" name="flexRadioDefault"
                                 id="flexRadioDefault1">
                             <label class="form-check-label" for="flexRadioDefault1">
                                 Xăng
@@ -154,11 +164,9 @@
 
                     </li>
                 </ul>
-
-
             </div>
-        </div>
-        <div class="btn filter-btn rounded-pill mb-5">
+        </div> -->
+        <div @click="handleFilter" class="btn filter-btn rounded-pill mb-5">
             Tìm kiếm
         </div>
     </form>

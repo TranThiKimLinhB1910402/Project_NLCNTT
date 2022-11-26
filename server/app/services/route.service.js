@@ -17,7 +17,11 @@ class RouteService {
         );
         return route;
       }
-
+    //   async findByKm(payload) {
+    //     return await this.Route.findOne({
+    //         so_km: km,
+    //     });
+    // }
       async find(filter) {
         const cursor = await this.Route.find(filter);
         return await cursor.toArray();

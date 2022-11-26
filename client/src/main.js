@@ -3,6 +3,7 @@ import App from './App.vue';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import router from "./router";
 import VCalendar from 'v-calendar';
+import 'vue-bootstrap-typeahead';
 import 'v-calendar/dist/style.css';
 import "./assets/css/style.css";
 import "./assets/css/login.css";

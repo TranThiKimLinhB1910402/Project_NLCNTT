@@ -25,17 +25,29 @@ class CarService {
         );
         return car;
     }
-    async getAllDate(){
+    async getDay(bs){
         const result = await this.Car.aggregate([
             {
-                $lookup: {
-                  from: "rents",
-                  localField: "ngaynhan",
-                  foreignField: "_id",
-                  as: "date",
-                },
+              $lookup: {
+                from: "rents",
+                let: { bienso: "$bien_so" },
+                pipeline: [
+                  {
+                    $match: {
+                      $expr: {
+                        $and: [
+                          { $eq: ["$car.bien_so", "$$bienso"] },
+                          { $eq: ["$$bienso", bs] },
+                        ],
+                      },
+                    },
+                  },
+                ],
+                as: "days",
+              },
             },
-        ])
+            { $unwind: "$days" },
+          ])
         return await result.toArray();
     }
     async create(file,payload){

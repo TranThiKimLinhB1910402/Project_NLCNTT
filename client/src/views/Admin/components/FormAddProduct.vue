@@ -70,6 +70,7 @@ export default {
                 formData.append('file', this.selectedFile);
                 this.buildFormData(formData, this.car)
                 await CarService.create(formData);
+                alert("Thêm thành công");
             } catch (error) {
                 console.log(error);
             }
@@ -83,7 +84,11 @@ export default {
 </script>
 <template>
     <div class="container py-5 g-5">
-        <div class="card form-register-car p-5">
+        <div class="card form-register-car">
+            <div class="card-header">
+                Thêm sản phẩm
+            </div>
+            <div class="card-body p-5">
                 <div class="row py-2">
                     <div class="col">
                         <label for="bien_so" class="form-label">Biển số xe</label>
@@ -125,7 +130,12 @@ export default {
                     </div>
                     <div class="col">
                         <label for="gia_thue_ngay" class="form-label">Giá thuê theo ngày</label>
-                        <input type="text" v-model="this.car.gia_thue_ngay" class="form-control" id="gia_thue_ngay"
+                        <input type="number" v-model="this.car.gia_thue_ngay" class="form-control" id="gia_thue_ngay"
+                            required>
+                    </div>
+                    <div class="col">
+                        <label for="gia_thue_km" class="form-label">Giá thuê theo km</label>
+                        <input type="number" v-model="this.car.gia_thue_theo_km" class="form-control" id="gia_thue_km"
                             required>
                     </div>
                     <div class="col">
@@ -137,6 +147,8 @@ export default {
                     <button v-if="this.car._id != null" @click="this.handleUpdate()" class="btn btn-order">Cập nhật</button>
                     <button v-else class="btn btn-order" @click="this.handleAdd()">Thêm</button>
                 </div>
+            </div>
+                
         </div>
     </div>
 

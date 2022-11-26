@@ -8,7 +8,7 @@ class DriverService {
     }
     async getDriverDay() {
         return (await this.api.get("/getday")).data;
-        }
+    }
     async createDriver(data) {
     return (await this.api.post("/create-driver", data)).data;
     }

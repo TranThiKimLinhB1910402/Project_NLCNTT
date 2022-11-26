@@ -28,6 +28,7 @@ exports.getAll = async (req, res, next) => {
     return res.send(documents);
 };
 
+
 exports.fineOne = async (req, res) => {
     try{
         const rent = new RentService(MongoDB.client);
@@ -80,7 +81,17 @@ exports.delete = async (req, res, next) => {
         );
     }
 };
-
-// exports.deleteAll = (req, res) => {
-//     res.send({message: "deleteAll"});
-// }
+exports.findByPhone = async (req, res, next) => {
+    try {
+      const rentService = new RentService(MongoDB.client);
+      const document = await rentService.findByPhone(req.params.phone);
+      if (!document) {
+        return next(new ApiError(404, "Contact not found"));
+      }
+      return res.send(document);
+    } catch (error) {
+      return next(
+        new ApiError(500, `Error retrieving contact with bs`)
+      );
+    }
+  };

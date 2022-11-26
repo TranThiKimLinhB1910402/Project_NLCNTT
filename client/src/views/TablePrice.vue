@@ -41,7 +41,11 @@ export default {
 <template>
     <div class="container py-5">
         <div class="row">
-            <h2>Bảng giá thuê xe du lịch 2022</h2>
+            <div class="d-flex justify-content-between">
+                <h2>Bảng giá thuê xe du lịch 2022</h2>
+                <router-link :to="{ name: 'register-car' } " class="fs-5 btn text-white btn-primary me-5">Đăng ký ngay</router-link>
+            </div>
+            
             <p class="mb-3 mt-3">
                 Dịch vụ cho thuê xe du lịch Thuê xe OTO Auto Car xin kính chào quý khách!
                 Cám ơn quý khách đã tạo điều kiện cho chúng tôi có cơ hội phục vụ quý khách.
@@ -64,9 +68,6 @@ export default {
         <table class="table table-bordered table-price">
             <thead>
                 <th>
-                    Tỉnh thành
-                </th>
-                <th>
                     Nơi đến
                 </th>
                 <th>
@@ -85,22 +86,19 @@ export default {
             <tbody v-for="route in routes">
                 <tr>
                     <td>
-                        {{ route.ten_tinh }}
-                    </td>
-                    <td>
                         {{ route.noi_den }}
                     </td>
                     <td>
                         {{ route.so_km }}
                     </td>
                     <td>
-                        {{ formatPrice(8000 * route.so_km) }} đ
+                        {{ formatPrice(10000 * route.so_km) }} đ
                     </td>
                     <td>
-                        {{ formatPrice(12000 * route.so_km) }} đ
+                        {{ formatPrice(15000 * route.so_km) }} đ
                     </td>
                     <td>
-                        {{ formatPrice(20000 * route.so_km) }} đ
+                        {{ formatPrice(25000 * route.so_km) }} đ
                     </td>
 
                 </tr>
@@ -113,6 +111,7 @@ export default {
 <style lang="scss">
 .table-price {
     th {
+        
         padding: 15px;
         font-size: 1.5rem;
         color: blue;

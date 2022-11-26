@@ -36,11 +36,6 @@ export default {
     <div class="container">
         <div class="row p-3 mt-3">
             <div class="col">
-                <!-- <div class="d-flex flex-row bd-highlight mb-3">
-                    <div class="p-2 bd-highlight">Flex item 1</div>
-                    <div class="p-2 bd-highlight">Flex item 2</div>
-                    <div class="p-2 bd-highlight">Flex item 3</div>
-                </div> -->
             </div>
             <div class="col">
                 <router-link :to="{ name: 'add-product' }" class="btn btn-add">

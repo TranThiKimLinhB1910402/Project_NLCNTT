@@ -1,6 +1,10 @@
 <script>
 import CarService from '../services/car.service';
 export default {
+    props: {
+        so_cho: { type: String },
+        muc_gia: { type: String }
+    },
     data() {
         return {
             cars: []
@@ -13,6 +17,10 @@ export default {
             } catch (error) {
                 console.log(error);
             }
+        },
+        formatPrice(value) {
+            let val = (value / 1).toFixed(0).replace('.', ',')
+            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
         }
     },
     mounted() {
@@ -22,14 +30,15 @@ export default {
 
 </script>
 <template>
-    <div class="col list-product" v-for="(car, index) in this.cars">
+    <template v-if="this.so_cho || this.muc_gia" v-for="(car, index) in this.cars">
+        <div class="col list-product" v-if="this.so_cho==car.so_cho || this.muc_gia >= car.gia_thue_ngay">
         <div class="card">
             <img :src="'../src/assets/images/products/' + car.hinh_anh" class="card-img img-fluid">
-           
+
             <div class="middle">
-                    <router-link :to="{ name: 'productDetail', params: {id: car._id} }" class="btn btn-info">
-                            Xem chi tiết
-                    </router-link>
+                <router-link :to="{ name: 'productDetail', params: { id: car._id } }" class="btn btn-info">
+                    Xem chi tiết
+                </router-link>
             </div>
             <div class="card-body">
                 <div class="card-title">
@@ -41,6 +50,28 @@ export default {
             </div>
         </div>
     </div>
+    </template>
+    
+    <div v-else class="col list-product" v-for="(car, index) in this.cars">
+        <div class="card">
+            <img :src="'../src/assets/images/products/' + car.hinh_anh" class="card-img img-fluid">
+
+            <div class="middle">
+                <router-link :to="{ name: 'productDetail', params: { id: car._id } }" class="btn btn-info">
+                    Xem chi tiết
+                </router-link>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    {{ car.ten_xe }}
+                </div>
+                <div class="card-text">
+                    <h4>{{ formatPrice(car.gia_thue_ngay) }} đ</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </template>
 <style lang="scss">
 .list-product {

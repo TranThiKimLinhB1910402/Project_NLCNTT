@@ -3,6 +3,7 @@ const { ObjectId } = require("mongodb");
 class RentService {
   constructor(client) {
     this.Rent = client.db().collection("rents");
+    this.Route = client.db().collection("routes");
   }
   extractConactData(payload) {
     const rent = {
@@ -13,9 +14,11 @@ class RentService {
       ngaytra: payload.ngaytra,
       ghichu: payload.ghichu,
       status: payload.status,
-      route: {
-        noi_khoi_hanh: payload.route.noi_khoi_hanh,
-        noiden: payload.route.noiden
+      noi_khoi_hanh: payload.noi_khoi_hanh,
+      noiden: payload.noiden,
+      loaixe: {
+        so_cho: payload.loaixe.so_cho,
+        gia_km: payload.loaixe.gia_km
       },
       car: {
         ten_xe: payload.car.ten_xe,
@@ -32,6 +35,20 @@ class RentService {
       (key) => rent[key] === undefined && delete rent[key]
     );
     return rent;
+  }
+  async getKm(){
+    const result = await this.Rent.aggregate([
+      {
+          $lookup: {
+            from: "routes",
+            localField: "noiden",
+            foreignField: "noi_den",
+            as: "sokm",
+          },
+      },
+      
+  ])
+  return await result.toArray();
   }
   async create(payload) {
     payload.ngaynhan = new Date(payload.ngaynhan).toLocaleString("vi-VN", {
@@ -55,7 +72,11 @@ class RentService {
       _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
     });
   }
-
+  async findByPhone(phone) {
+    return await this.find({
+    sdt: phone
+    });
+}
   async update(id, payload) {
     console.log(payload);
     const filter = {

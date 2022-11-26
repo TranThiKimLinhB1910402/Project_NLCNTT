@@ -1,3 +1,6 @@
+<script>
+
+</script>
 <template>
     <div class="header-inner">
         <div class="container-fluid">
@@ -50,22 +53,10 @@
                             Trang chủ
                         </router-link>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                    <li class="nav-item">
+                        <router-link :to="{ name: 'products' }" class="nav-link">
                             Danh mục thuê xe
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Xe 4 chổ</a></li>
-                            <li><a class="dropdown-item" href="#">Xe 7 chổ</a></li>
-                            <li><a class="dropdown-item" href="#">Xe 16 chổ</a></li>
-                            <li><a class="dropdown-item" href="#">Xe 32 chổ</a></li>
-                            <li>
-                                <router-link :to="{ name: 'products' }" class="dropdown-item">
-                                    Tất cả
-                                </router-link>
-                            </li>
-                        </ul>
+                        </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link :to="{ name: 'bang-gia' }" class="nav-link">
@@ -83,7 +74,9 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Liên hệ</a>
+                        <router-link :to="{ name: 'tra-cuu' }" class="nav-link">
+                            Lịch sử đăng ký
+                        </router-link>
                     </li>
                 </ul>
             </div>

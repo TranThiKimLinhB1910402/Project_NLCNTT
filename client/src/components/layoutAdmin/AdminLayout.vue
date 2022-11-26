@@ -9,7 +9,7 @@ export default{
 
 </script>
 <template>
-    <div class="d-flex bg-light">
+    <div class="d-flex">
       <SidebarVue />
       <router-view />
     </div>
