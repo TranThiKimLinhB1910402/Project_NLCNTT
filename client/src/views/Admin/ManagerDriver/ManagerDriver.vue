@@ -3,8 +3,7 @@ import driverService from '@/services/driver.service';
 export default {
     data() {
         return {
-            drivers: [
-            ]
+            drivers: []
         }
     },
     methods: {
@@ -13,6 +12,16 @@ export default {
                 this.drivers = await driverService.getAllDrivers();
             } catch (error) {
                 console.log(error)
+            }
+        },
+        async handleDelete(id, name){
+            if(confirm(`Bạn muốn xóa ${name}`)){
+                try{
+                    await driverService.delete(id);
+                    window.location.replace("/admin/manager-driver");
+                } catch(error){
+                    console.log(error)
+                }
             }
         }
     },
@@ -27,7 +36,7 @@ export default {
             <div class="col">
             </div>
             <div class="col">
-                <router-link :to="{ name: 'add-rent' }" class="btn btn-add">
+                <router-link :to="{ name: 'add-driver' }" class="btn btn-add">
                     <i class="fa-solid fa-plus me-1"></i>
                     Thêm tài xế
                 </router-link>
@@ -50,6 +59,8 @@ export default {
                             <th>Full name</th>
                             <th>Address</th>
                             <th>Email</th>
+                            <th>Chi tiết</th>
+                            <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody v-for="user in drivers">
@@ -58,6 +69,18 @@ export default {
                                 <td>{{ user.full_name }}</td>
                                 <td>{{ user.address }}</td>
                                 <td>{{ user.email }}</td>
+                                
+                                <td>
+                                    <router-link :to="{ name: 'edit-driver', params:{id: user._id} }">
+                                    <i class="fa-regular fa-pen-to-square fs-4 text-primary me-2"></i>
+                                </router-link>
+                                <i @click="handleDelete(user._id,user.full_name)"  class="fa-solid fa-trash-can fs-4 text-danger"></i>
+                                </td>
+                                <td>
+                                    <router-link :to="{ name: 'detail-driver', params:{id: user._id}}">
+                                        <i class="fa-solid fa-circle-info fs-4 text-primary"></i>
+                                    </router-link>
+                                </td>
                         </tr> 
                     </tbody>
                 </table>

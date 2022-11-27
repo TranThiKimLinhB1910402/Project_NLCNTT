@@ -8,5 +8,8 @@ router.route("/")
     .post(drivers.createDriver)
 router.route("/getday")
     .get(drivers.getDriverDay)
-    
+router.route("/:id")
+    .get(drivers.fineOne)
+    .delete(drivers.delete)
+    .put(drivers.update)
 module.exports = router;

@@ -13,9 +13,9 @@ class CarService {
             }
         })).data;
     }
-    async getDayBS(id) {
-        return (await this.api.get(`/getbs/${id}`)).data;
-        }
+    // async getDayBS(id) {
+    //     return (await this.api.get(`/getbs/${id}`)).data;
+    // }
     async get(id) {
     return (await this.api.get(`/${id}`)).data;
     }

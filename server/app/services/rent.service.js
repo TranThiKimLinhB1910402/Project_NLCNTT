@@ -73,9 +73,9 @@ class RentService {
     });
   }
   async findByPhone(phone) {
-    return await this.find({
+    return await this.Rent.find({
     sdt: phone
-    });
+    }).toArray();
 }
   async update(id, payload) {
     console.log(payload);

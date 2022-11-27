@@ -1,9 +1,8 @@
 <script>
-import CarService from '@/services/car.service';
-import FormAddCar from '../components/FormAddProduct.vue';
+import FormAddDriver from '../components/FormAddDriver.vue';
 export default {
     components: {
-        FormAddCar
+        FormAddDriver
     },
     data(){
         const _id =  this.$route.params.id;
@@ -14,6 +13,6 @@ export default {
 }
 </script>
 <template>
-        <FormAddCar :id="this._id" />
+        <FormAddDriver :id="this._id" />
 
 </template>

@@ -6,7 +6,10 @@ export default {
             value: null,
             rents: [
                 {
-                    sdt: ""
+                    sdt: "",
+                    noi_khoi_hanh:{
+                        quan_huyen: ""
+                    }
                 }
             ],
             state: 0
@@ -15,25 +18,17 @@ export default {
     methods: {
         async findByPhone(phone) {
             try {
+                console.log(phone);
                 this.rents = await rentService.findByPhone(phone);
                 this.state = 1;
                 console.log(this.value);
                  console.log(this.rents);
-                // for(var i =0; i<= this.rents.length; i++){
-                    // if(this.rents[i].sdt == this.value){
-                    //     console.log(this.rents[i].sdt);
-                    // }
-                   
-               // }
                 
             } catch (error) {
                 console.log(error);
             }
         }
     },
-    // mounted() {
-    //     this.findByPhone();
-    // }
 }
 </script>
 <template>
@@ -58,7 +53,8 @@ export default {
                             <th>Trạng thái</th>
                             <th>Thời gian nhận</th>
                             <th>Thời gian trả</th>
-                            <th>Chi tiết</th>
+                            <th>Nơi khởi hành</th>
+                            <th>Nơi đến</th>
                         </tr>
                     </thead>
                     <tbody >
@@ -77,38 +73,12 @@ export default {
                             </td>
                             <td>{{ rent.ngaynhan }}</td>
                             <td>{{ rent.ngaytra }}</td>
+                            <td>{{ rent.noi_khoi_hanh.quan_huyen }}</td>
+                            <td>{{ rent.noiden }}</td>
                         </tr>
                     </tbody>
                 </table>
         </div>
-        <!-- <div class="col col-md-5">
-            <div class="card card-p">
-                <div class="card-body">
-                    <h4>CAM KẾT DỊCH VỤ</h4>
-                    <ul>
-                        <li>
-                            Giá thuê xe luôn cạnh tranh, tốt nhất thị trường Cần Thơ
-                        </li>
-                        <li>
-                            Toàn bộ xe tại AutoCar đều là xe đời mới.
-                        </li>
-                        <li>
-                            Xe luôn được kiểm tra kĩ thuật kỹ càng trước khi lên đường.
-                        </li>
-                        <li>
-                            Xe luôn có mặt đúng giờ hẹn của khách hàng
-                        </li>
-                        <li>
-                            Lái xe vui vẻ thân thiện luôn phục vụ hài lòng quý khách
-                        </li>
-                        <li>
-                            Chúng tôi cam kết đem lại chất lượng dịch vụ cho thuê xe tốt nhất tới khách hàng.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div> -->
-
     </div>
 </template>
 <style lang="scss">

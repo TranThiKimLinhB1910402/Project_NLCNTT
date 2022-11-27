@@ -31,11 +31,6 @@ export default {
       try {
         this.rent = await RentService.get(id);
         this.rent.isDriver = this.rent.ten_tai_xe==null?false:true;
-    //     console.log(this.rent.ngaynhan<this.rent.ngaytra)
-    //     console.log(this.rent.ngaynhan.substring(this.rent.ngaynhan.indexOf(" ")).replaceAll("/","-"));
-    //     console.log(new Date().toDateString("vi-VN", {
-    //   timeZone: "Asia/Ho_Chi_Minh",
-    // }));
       } catch (error) {
         console.log(error);
       }

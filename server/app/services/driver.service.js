@@ -38,17 +38,34 @@ class DriverService{
         const isExist = await this.Driver.findOne({ _id: driver._id });
         if (!isExist) {
           const result = await this.Driver.insertOne(driver);
-          return result;
+          return result.value;
         }
     }
     async find(filter) {
         const cursor = await this.Driver.find(filter);
         return await cursor.toArray();
     }
+    async findById(id) {
+        return await this.Driver.findOne({
+            _id: id,
+        });
+    }
     async delete(id) {
         const result = await this.Driver.findOneAndDelete({
-          _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
+          _id: id,
         });
+        return result.value;
+    }
+    async update(id, payload){
+        const filter = {
+            _id: id,
+        }
+        const update = this.extractDriverData(payload);
+        const result = await this.Driver.findOneAndUpdate(
+            filter,
+            { $set: update },
+            { returnDocument: "after"}
+        );
         return result.value;
     }
 }

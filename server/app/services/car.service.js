@@ -8,12 +8,14 @@ class CarService {
     
     extractConactData(payload){
         const car = {
+            _id: payload.bien_so,
             ten_xe: payload.ten_xe,
             bien_so: payload.bien_so,
             nam_sx: payload.nam_sx,
             so_cho: payload.so_cho,
             loai_may: payload.loai_may,
             gia_thue_ngay: payload.gia_thue_ngay,
+            gia_thue_theo_km: payload.gia_thue_theo_km,
             mau_xe: payload.mau_xe,
             tg_dang_kiem: payload.tg_dang_kiem,
             favorite: payload.favorite,
@@ -70,10 +72,11 @@ class CarService {
                 return res.status(500).send({ msg: "Error occured" });
             }
         });
-        const result = await this.Car.insertOne(
-            car
-          );
+        const isExist = await this.Car.findOne({ _id: car._id });
+        if (!isExist) {
+          const result = await this.Car.insertOne(car);
           return result.value;
+        }
     }
     async find(filter) {
         const cursor = await this.Car.find(filter);
@@ -91,7 +94,7 @@ class CarService {
     }
     async delete(id){
         const result = await this.Car.findOneAndDelete({
-            _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
+            _id: id,
         });
         return result.value;
     }

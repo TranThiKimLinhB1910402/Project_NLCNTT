@@ -13,7 +13,7 @@ class RentService {
     return (await this.api.get(`/${id}`)).data;
     }
     async findByPhone(id){
-        return(await this.api.get(`/phone/${id}`.data));
+        return(await this.api.get(`/phone/${id}`)).data;
     }
     async update(id, data) {
     return (await this.api.put(`/${id}`, data)).data;

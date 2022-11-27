@@ -1,57 +1,82 @@
 <script>
-import * as yup from "yup";
+import driverService from '../../../services/driver.service';
 export default {
-    emits: ["submit:driver"],
     props: {
-        driver: { type: Object },
-        edit: null
+        id: { type: String }
     },
     data() {
         return {
-            driverLocal: this.driver,
+            driver: {}
         };
-
     },
     methods: {
-        onSubmit() { this.$emit("submit:driver", this.driverLocal); },
-        onFileChange(e) {
-            var files = e.target.files || e.dataTransfer.files;
-            if (!files.length)
-                return;
-            this.createImage(files[0]);
-        },
+        async get(){
+            try{
+                if(this.id){
+                    this.driver = await driverService.getDriver(this.id);
+                }
+                else this.driver = {}
+                
+            } catch(error){
+                console.log(error);
+            }
 
+        },
+        async AddDriver() {
+            try {
+                await driverService.createDriver(this.driver);
+                alert("Thêm thành công");
+                this.$router.push({ name: "manager-driver" })
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async UpdateDriver(){
+            try{
+                this.driver = await driverService.update(this.driver._id,this.driver);
+                alert("Cập nhật thành công");
+                this.$router.push({ name: "manager-driver" })
+            }
+            catch(error){
+                console.log(error);
+            }
+        }
+    },
+    created(){
+        this.get()
     }
 }
 
 </script>
 <template>
     <div class="container py-5 g-5">
-        <div class="card form-register-car p-5">
-            <form @submit="onSubmit">
-                <div class="row py-2">
-                    <div class="col">
-                        <label for="bien_so" class="form-label">Họ tên</label>
-                        <input type="text" v-model="this.driverLocal.full_name" class="form-control" id="full_name" required>
-                    </div>
-                    <div class="col">
-                        <label for="ten_xe" class="form-label">Địa chỉ</label>
-                        <input type="text" v-model="this.driverLocal.address" class="form-control" id="address" required>
-                    </div>
-                    <div class="col">
-                        <label for="nam_sx" class="form-label">Email</label>
-                        <input type="text" v-model="this.driverLocal.email" class="form-control" id="email" required>
-                    </div>
-                    <div class="col">
-                        <label for="nam_sx" class="form-label">Số điện thoại</label>
-                        <input type="text" v-model="this.driverLocal.phone" class="form-control" id="phone" required>
-                    </div>
+        <div class="card form-register-car w-75">
+            <div class="card-header">
+                Thêm tài xế
+            </div>
+            <div class="card-body p-5">
+                <div class="mb-3">
+                    <label for="bien_so" class="form-label">Họ tên</label>
+                    <input type="text" v-model="this.driver.full_name" class="form-control" id="full_name" required>
                 </div>
-                <div class="col-12 mt-4">
-                    <button v-if="edit" class="btn btn-order" type="submit">Cập nhật</button>
-                    <button v-else class="btn btn-order" type="submit">Thêm</button>
+                <div class="mb-3">
+                    <label for="ten_xe" class="form-label">Địa chỉ</label>
+                    <input type="text" v-model="this.driver.address" class="form-control" id="address" required>
                 </div>
-            </form>
+                <div class="mb-3">
+                    <label for="nam_sx" class="form-label">Email</label>
+                    <input type="text" v-model="this.driver.email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nam_sx" class="form-label">Số điện thoại</label>
+                    <input type="text" v-model="this.driver.phone" class="form-control" id="phone" required>
+                </div>
+                <div class=" mt-4">
+                    <button v-if="this.driver._id != null" @click="this.UpdateDriver()" class="btn btn-order">Cập nhật</button>
+                    <button v-else @click="this.AddDriver()" class="btn btn-order">Thêm</button>
+                </div>
+            </div>
+
         </div>
     </div>
 

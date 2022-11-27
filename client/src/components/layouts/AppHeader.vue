@@ -1,6 +1,4 @@
-<script>
 
-</script>
 <template>
     <div class="header-inner">
         <div class="container-fluid">

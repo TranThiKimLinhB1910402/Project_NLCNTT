@@ -6,19 +6,6 @@ export default {
         id: {type: String}
     },
     data() {
-        // const formCar = yup.object().shape({
-        //         ten_xe: yup.string(),
-        //         bien_so: yup.string(),
-        //         nam_sx: yup.string(),
-        //         so_cho: yup.string(),
-        //         loai_may: yup.string(),
-        //         gia_thue_ngay: yup.string(),
-        //         mau_xe: yup.string(),
-        //         tg_dang_kiem: yup.string(),
-        //         favorite: false,
-        //         ten_hang: yup.string(),
-        //         hinh_anh: yup.string()
-        // });
         return {
             car: {}
         };
@@ -59,6 +46,7 @@ export default {
             this.buildFormData(formData, this.car)
             await CarService.update(this.car._id, formData);
             alert("Cập nhật thành công");
+            this.$router.push({name: "manager-product"})
             } catch(error){
                 console.log(error)
             }
@@ -71,8 +59,10 @@ export default {
                 this.buildFormData(formData, this.car)
                 await CarService.create(formData);
                 alert("Thêm thành công");
+                this.$router.push({name: "manager-product"})
             } catch (error) {
                 console.log(error);
+                alert("Biển số đã tồn tại hoặc nhập thiếu thông tin");
             }
         }
     },
@@ -131,12 +121,12 @@ export default {
                     <div class="col">
                         <label for="gia_thue_ngay" class="form-label">Giá thuê theo ngày</label>
                         <input type="number" v-model="this.car.gia_thue_ngay" class="form-control" id="gia_thue_ngay"
-                            required>
+                            >
                     </div>
                     <div class="col">
                         <label for="gia_thue_km" class="form-label">Giá thuê theo km</label>
                         <input type="number" v-model="this.car.gia_thue_theo_km" class="form-control" id="gia_thue_km"
-                            required>
+                            >
                     </div>
                     <div class="col">
                         <label for="hinh_anh" class="form-label">Hình ảnh</label>

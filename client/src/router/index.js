@@ -18,7 +18,15 @@ import DetailRent from "@/views/Admin/ManagerRent/DetailRent.vue";
 import AddProduct from "@/views/Admin/ManagerProduct/AddProduct.vue";
 import AddDriver from "@/views/Admin/ManagerDriver/AddDriver.vue";
 import EditProduct from "@/views/Admin/ManagerProduct/EditProduct.vue";
-import AddRent from "@/views/Admin/ManagerRent/AddRent.vue"
+import AddRent from "@/views/Admin/ManagerRent/AddRent.vue";
+import DetailDriver from "@/views/Admin/ManagerDriver/DetailDriver.vue";
+import EditDriver from "@/views/Admin/ManagerDriver/EditDriver.vue"
+import ManagerRoute from "@/views/Admin/ManagerRoute/ManagerRoute.vue";
+import AddRoute from "@/views/Admin/ManagerRoute/AddRoute.vue";
+import EditRoute from "@/views/Admin/ManagerRoute/EditRoute.vue";
+
+
+
 const routes = [
     
      { 
@@ -36,6 +44,13 @@ const routes = [
             { path: 'manager-rent/:id', name: "detail-rent", component: DetailRent, props: true},
             { path: 'manager-driver', name: "manager-driver", component: ManagerDriver},
             { path: 'add-driver', name:"add-driver", component: AddDriver},
+            { path: 'manager-driver/:id', name:"edit-driver", component: EditDriver, props: true},
+            { path: 'detail-driver/:id', name:"detail-driver", component: DetailDriver},
+            { path: 'manager-route', name: "manager-route", component: ManagerRoute},
+            { path: 'add-route', name:"add-route", component: AddRoute},
+            { path: 'manager-route/:id', name:"edit-route", component: EditRoute, props: true},
+
+            
 
 
             

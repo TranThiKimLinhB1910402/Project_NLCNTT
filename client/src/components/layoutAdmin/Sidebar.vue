@@ -1,8 +1,8 @@
 <template>
     <div class="sidebar-admin d-flex flex-column flex-shrink-0" style="max-width: 280px;">
-        <!-- <div class="p-5">
-            AUTO CAR
-        </div> -->
+        <div class="p-5 logo">
+          <i class="fa-solid fa-car fs-3"></i>  AUTO CAR 
+        </div>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
                 <a href="#" class="nav-link" aria-current="page">
@@ -12,13 +12,13 @@
             </li>
             <li>
                 <router-link :to="{ name: 'manager-product' }" class="nav-link">
-                    <i class="fa-solid fa-car fs-5 me-3"></i>
+                    <i class="fa-solid fa-car-side fs-5 me-3"></i>
                     Quản lý xe
                 </router-link>
             </li>
             <li>
                 <router-link :to="{ name: 'manager-rent' }" class="nav-link">
-                    <i class="fa-solid fa-paste fs-5 me-3"></i>
+                    <i class="fa-solid fa-file-pen fs-5 me-3"></i>
                     Quản lý phiếu đăng ký
                 </router-link>
             </li>
@@ -30,50 +30,51 @@
             </li>
             <li>
                 <router-link :to="{ name: 'manager-driver' }" class="nav-link">
-                    <i class="fa-solid fa-chalkboard-user fs-5 me-3"></i>
+                    <i class="fa-regular fa-id-card fs-5 me-3"></i>
                     Quản lý tài xế
                 </router-link>
             </li>
             <li>
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-chalkboard-user fs-5 me-3"></i>
-                    Thống kê doanh thu
-                </a>
+                <router-link :to="{ name: 'manager-route' }" class="nav-link">
+                    <i class="fa-solid fa-map fs-5 me-3"></i>
+                    Quản lý chuyến đi
+                </router-link>
             </li>
             <li>
                 <a href="#" class="nav-link">
-                    <i class="fa-solid fa-chalkboard-user fs-5 me-3"></i>
+                    <i class="fa-solid fa-chart-column fs-5 me-3"></i>
                     Thống kê doanh thu
                 </a>
             </li>
             <hr class="w-100" />
             <li>
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-chalkboard-user fs-5 me-3"></i>
+                <a href="#" class="nav-link" @click="onSignOut">
+                    <i class="fa-solid fa-right-from-bracket fs-5 me-3"></i>
                     Log out
                 </a>
             </li>
         </ul>
-
-
-        <!-- <div class="dropdown p-4">
-            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                <strong>mdo</strong>
-            </a>
-            <ul class="dropdown-menu text-small shadow">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
-        </div> -->
     </div>
 </template>
+<script>
+import { useUserStore } from '../../store/useStore';
+
+export default {
+    data() {
+        const userStore = useUserStore();
+        return {
+            userStore,
+        };
+    },
+    methods: {
+        async onSignOut() {
+            this.userStore.user = {};
+            window.location.replace("login");
+        }
+    }
+}
+
+</script>
 <style lang="scss">
 .sidebar-admin {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
