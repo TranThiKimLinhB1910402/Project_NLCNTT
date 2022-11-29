@@ -27,7 +27,7 @@ export default {
     <section class="service bg-light">
         <CardService />
     </section>
-    <section class="bg-light">
+    <!-- <section class="bg-light">
         <div class="container">
             <div class="d-block justify-content-center py-5">
                 <h2 class="mb-4 fs-3 text-center">XE THUÊ NHIỀU NHẤT</h2>
@@ -41,7 +41,7 @@ export default {
                 <CardProductHome/>
             </div>
         </div>
-    </section>
+    </section> -->
 </template>
 <style lang="scss">
 .service {

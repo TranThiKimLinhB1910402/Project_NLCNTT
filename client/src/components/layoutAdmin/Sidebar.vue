@@ -1,7 +1,7 @@
 <template>
     <div class="sidebar-admin d-flex flex-column flex-shrink-0" style="max-width: 280px;">
-        <div class="p-5 logo">
-          <i class="fa-solid fa-car fs-3"></i>  AUTO CAR 
+        <div class="p-5 logo fs-3">
+          <i class="fa-solid fa-car fs-3 me-2"></i>  AUTO CAR 
         </div>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
@@ -76,6 +76,8 @@ export default {
 
 </script>
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+
 .sidebar-admin {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
@@ -98,5 +100,9 @@ export default {
             }
         }
     }
+}
+.logo{
+    font-family: 'Nunito', sans-serif;
+    font-weight:  800;
 }
 </style>

@@ -6,7 +6,11 @@ exports.createUser = async (req, res, next) => {
     try {
         const userService = new UserService(MongoDB.client);
         const document = await userService.create(req.body);
-        console.log(document);
+        if(!document){
+            return next(
+                new ApiError(404, "Username or Password incorrect")
+            );
+        }
         return res.send(document);
     } catch(error){
         return next(

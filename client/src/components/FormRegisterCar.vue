@@ -111,9 +111,11 @@ export default {
                     this.countDay(this.rent.ngaynhan, this.rent.ngaytra) * data.car.gia_thue_ngay;
                     
             } else {
-               price = this.car.gia_thue_theo_km * this.rent.noiden.so_km;
+               price = this.car.gia_thue_theo_km * this.rent.noiden.so_km * 
+               this.countDay(this.rent.ngaynhan, this.rent.ngaytra) + 
+               300000 * this.countDay(this.rent.ngaynhan, this.rent.ngaytra);
             }
-            data.gia_thue = price - (price % 10000);
+            data.gia_thue = price - (price % 100000);
             data.noiden = data.noiden.noi_den;
 
             try {
@@ -129,10 +131,14 @@ export default {
             }
         },
         async onSubmitRegisterCarType(data) {
+            var price;
             data.id_user = this.userStore.user._id;
-
-            data.gia_thue = this.rent.loaixe.gia_km * this.rent.noiden.so_km;
+            price = this.rent.loaixe.gia_km * this.rent.noiden.so_km * 
+            this.countDay(this.rent.ngaynhan, this.rent.ngaytra) + 
+            300000 * this.countDay(this.rent.ngaynhan, this.rent.ngaytra);
             data.noiden = data.noiden.noi_den;
+            data.gia_thue = price - (price % 100000)
+            console.log( data.gia_thue);
             try {
 
                 const rs = await rentService.create(data);
@@ -243,7 +249,13 @@ export default {
                         :value="formatPrice(this.car.gia_thue_ngay * countDay(this.rent.ngaynhan, this.rent.ngaytra))"
                         class="form-control" id="total" />
                     <input v-else-if="this.rent.noiden.so_km != null" type="text" disabled
-                        :value="this.car.gia_thue_theo_km * this.rent.noiden.so_km * countDay(this.rent.ngaynhan, this.rent.ngaytra)"
+                        :value="
+                        formatPrice(
+                            this.car.gia_thue_theo_km * this.rent.noiden.so_km * 
+                            countDay(this.rent.ngaynhan, this.rent.ngaytra) - 
+                            ((this.car.gia_thue_theo_km * this.rent.noiden.so_km * 
+                            countDay(this.rent.ngaynhan, this.rent.ngaytra) % 100000)) + 
+                            300000*(countDay(this.rent.ngaynhan, this.rent.ngaytra)))"
                         class="form-control" id="total" />
                     <input v-else type="text" disabled :value="0" class="form-control" id="total" />
                 </div>
@@ -270,7 +282,7 @@ export default {
                     <select v-model="this.rent.ten_dichvu" @change="sortBy(this.rent.ten_dichvu)" name="service" id=""
                         class="form-select ">
                         <option v-for="(dichVu) in this.dichvus" :value="dichVu.ten_dichvu">
-                            {{ dichVu.ten_dichvu }}
+                           <p v-if="dichVu.ten_dichvu == 'Thuê tài xế'">{{ dichVu.ten_dichvu }}</p> 
                         </option>
                     </select>
                 </div>
@@ -320,7 +332,13 @@ export default {
                     <label for="total" class="form-label">Thành tiền: </label>
 
                     <input v-if="this.rent.noiden.so_km != null" type="text" disabled
-                        :value="this.rent.loaixe.gia_km * this.rent.noiden.so_km * countDay(this.rent.ngaynhan, this.rent.ngaytra)"
+                        :value="formatPrice(
+                            this.rent.loaixe.gia_km * this.rent.noiden.so_km * 
+                            countDay(this.rent.ngaynhan, this.rent.ngaytra)-
+                            ((this.rent.loaixe.gia_km * this.rent.noiden.so_km * 
+                            countDay(this.rent.ngaynhan, this.rent.ngaytra)) % 100000)
+                            + 300000 * countDay(this.rent.ngaynhan, this.rent.ngaytra)
+                            )"
                         class="form-control" id="total" />
                     <input v-else type="text" disabled :value="0" class="form-control" id="total" />
                 </div>

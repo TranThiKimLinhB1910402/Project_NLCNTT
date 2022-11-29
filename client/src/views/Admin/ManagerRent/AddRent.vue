@@ -85,10 +85,10 @@ export default {
             }
         },
         async onSubmitRegisterCarType(data) {
-            data.id_user = this.userStore.user._id;
-
-            data.gia_thue = this.rent.loaixe.gia_km * this.rent.noiden.so_km;
+            var price;
             data.noiden = data.noiden.noi_den;
+            price = this.rent.loaixe.gia_km * this.rent.noiden.so_km + 300000;
+            data.gia_thue = price - (price % 100000)
             try {
 
                 const rs = await rentService.create(data);
@@ -210,7 +210,11 @@ export default {
                         <label for="total" class="form-label">Thành tiền: </label>
 
                         <input v-if="this.rent.noiden.so_km != null" type="text" disabled
-                            :value="this.rent.loaixe.gia_km * this.rent.noiden.so_km * countDay(this.rent.ngaynhan, this.rent.ngaytra)"
+                            :value="formatPrice(
+                            this.rent.loaixe.gia_km * this.rent.noiden.so_km * countDay(this.rent.ngaynhan, this.rent.ngaytra)-
+                            ((this.rent.loaixe.gia_km * this.rent.noiden.so_km * countDay(this.rent.ngaynhan, this.rent.ngaytra)) % 100000)
+                            + 300000
+                            )"
                             class="form-control" id="total" />
                         <input v-else type="text" disabled :value="0" class="form-control" id="total" />
                     </div>

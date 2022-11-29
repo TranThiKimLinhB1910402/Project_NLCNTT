@@ -18,7 +18,9 @@ exports.create = async (req, res, next) => {
     try {
         const routeService = new RouteService(MongoDB.client);
         const document = await routeService.create(req.body);
-        console.log(document);
+        if(!document){
+            return next(new ApiError(404,"Contact not found"));
+        }
         return res.send(document);
     } catch(error){
         return next(

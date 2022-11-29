@@ -31,9 +31,9 @@ export default {
             return date.substring(date.indexOf(" "))
         },
         formatPrice(value) {
-      let val = (value / 1).toFixed(0).replace(".", ",");
-      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    },
+            let val = (value / 1).toFixed(0).replace(".", ",");
+            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        },
         async getDay() {
             try {
                 this.driverPDK = await driverService.getDriverDay();
@@ -47,6 +47,10 @@ export default {
                             var b = d1.split('/')[0];
                             if (a < b) {
                                 this.songay = this.songay + (b - a);
+                            } else if (
+                                a == b
+                            ) {
+                                this.songay = this.songay + 1
                             }
 
                         }
@@ -112,10 +116,10 @@ export default {
                         </tr>
                         <tr>
                             <td>
-                               Chiết khấu / ngày
+                                Chiết khấu / ngày
                             </td>
                             <td>
-                               + {{formatPrice(300000)}} đ
+                                + {{ formatPrice(300000) }} đ
                             </td>
                         </tr>
                         <tr>
@@ -123,7 +127,7 @@ export default {
                                 Tổng chiết khấu
                             </td>
                             <td>
-                                {{formatPrice(this.songay * 300000)}} đ
+                                {{ formatPrice(this.songay * 300000) }} đ
                             </td>
                         </tr>
                     </tbody>

@@ -11,6 +11,11 @@ exports.create = async (req, res, next) => {
           }
         const carService = new CarService(MongoDB.client);
         const document = await carService.create(req.files.file, req.body);
+        if(!document){
+            return next(
+                new ApiError(404, "Đã tồn tại biển số")
+            );
+        }
         return res.send(document);
     } catch(error){
         return next(

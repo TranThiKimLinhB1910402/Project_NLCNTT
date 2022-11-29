@@ -63,6 +63,8 @@ export default {
             <p class="mb-4" style="font-style: italic;"><span class="text-danger fs-5">*Lưu ý 2:</span> Giá xe không áp
                 dụng cho các dòng xe Toyota Camry, Lexus, Mercedes... Nếu quan tâm đến các dòng xe cao cấp nói trên. Quý
                 khách hành vui lòng truy cập đến chi tiết của từng xe để xem giá thuê theo số km.</p>
+                <p class="mb-4" style="font-style: italic;"><span class="text-danger fs-5">*Lưu ý 3:</span> Nếu lộ trình quý khách muốn thuê không có báo giá sẵn ở bảng giá bên dưới. Quý
+                khách hành vui lòng đợi từ 1 đến 2 ngày để chúng tôi có thể liên hệ báo giá sớm nhất đến quý khách.</p>
         </div>
 
         <table class="table table-bordered table-price">

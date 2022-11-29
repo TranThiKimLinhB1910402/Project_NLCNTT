@@ -55,9 +55,9 @@ export default {
                 <table class="table table-hover" style="border-radius: 5px;">
                     <thead>
                         <tr>
-                            <th>Phone</th>
-                            <th>Full name</th>
-                            <th>Address</th>
+                            <th>Số điện thoại</th>
+                            <th>Họ tên</th>
+                            <th>Địa chỉ</th>
                             <th>Email</th>
                             <th>Chi tiết</th>
                             <th>Thao tác</th>

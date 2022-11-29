@@ -13,6 +13,10 @@
                 } catch(error){
                     console.log(error);
                 }
+            },
+            formatPrice(value) {
+                let val = (value / 1).toFixed(0).replace('.', ',')
+                return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
             }
         },
         mounted(){
@@ -24,7 +28,7 @@
 <template>
     <div class="col list-product" v-for="(car, index) in this.cars">
         <div class="card" v-if="car.favorite == 1">
-            <img :src="car.hinh_anh" class="card-img img-fluid">
+            <img :src="'../src/assets/images/products/' + car.hinh_anh" class="card-img img-fluid">
             <div class="middle">
                 <div class="btn btn-info">Xem chi tiết</div>
             </div>

@@ -18,9 +18,14 @@ export default {
   },
   methods: {
     async onSubmitRegister(data) {
-      const result = await UserService.createUser(data);
-      console.log(result)
-      this.$router.push("/login")
+      try{
+         const result = await UserService.createUser(data); 
+         this.$router.push("/login")
+      }catch(error){
+        console.log(error);
+        alert('Số điện thoại đã tồn tại')
+      }
+     
     }
   }
 }
@@ -33,7 +38,7 @@ export default {
           <div class="col-xl-8 col-lg-10">
             <div class="login-registration-style-3 mt-50">
               <h4 class="heading-4 font-weight-500 title">
-                Login to your account
+                Register to your account
               </h4>
               <p class="paragraph-small font-weight-300 mt-15">
                 Login to your account for a faster checkout.
@@ -79,7 +84,6 @@ export default {
                         <i class="fa-solid fa-lock fs-6 mt-3"></i>
                       </div>
                     </div>
-                    <a class="forget" href="#0">Forget Password?</a>
                     <div class="single-form">
                       <button class="main-btn primary-btn" type="submit">Register</button>
                     </div>
@@ -87,7 +91,7 @@ export default {
                   </form>
                 </div>
                 <div class="col-md-5 text-center">
-                  <p class="account ">Login with Social Account</p>
+                  <p class="account ">Register with Social Account</p>
                   <ul>
                     <li class="facebook">
                       <a href="/">
@@ -101,7 +105,7 @@ export default {
                     </li>
                   </ul>
                   <p class="login">
-                    Haven’t an account? <a href="#0">Sign up</a>
+                    Have an account? <a href="#0">Login</a>
                   </p>
                 </div>
               </div>

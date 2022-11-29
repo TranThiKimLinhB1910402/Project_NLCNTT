@@ -6,6 +6,11 @@ exports.create = async (req, res, next) => {
     try {
         const rent = new RentService(MongoDB.client);
         const document = await rent.create(req.body);
+        if(!document){
+            return next(
+                new ApiError(404, "Error while creating")
+            );
+        }
         return res.send(document);
     }
     catch (error) {

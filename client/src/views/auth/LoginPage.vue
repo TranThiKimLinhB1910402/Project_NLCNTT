@@ -27,7 +27,7 @@
             this.$router.push("/admin")
           }
         } catch(error){
-          this.error = err.response.data.message;
+          alert('Số điện thoại hoặc mật khẩu không đúng');
         }
       }
     }

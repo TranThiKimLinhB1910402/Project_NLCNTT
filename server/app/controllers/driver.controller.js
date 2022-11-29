@@ -6,8 +6,9 @@ exports.createDriver = async (req, res, next) => {
     try {
         const driverService = new DriverService(MongoDB.client);
         const document = await driverService.create(req.body);
-        console.log('ok');
-        console.log(document);
+        if(!document){
+          return next(new ApiError(404,"Contact not found"));
+      }
         return res.send(document);
     } catch(error){
         return next(

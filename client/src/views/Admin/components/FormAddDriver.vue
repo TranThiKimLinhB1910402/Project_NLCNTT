@@ -29,6 +29,7 @@ export default {
                 this.$router.push({ name: "manager-driver" })
             } catch (error) {
                 console.log(error);
+                alert("Số điện thoại đã tồn tại hoặc nhập thiếu thông tin");
             }
         },
         async UpdateDriver(){
@@ -51,8 +52,11 @@ export default {
 <template>
     <div class="container py-5 g-5">
         <div class="card form-register-car w-75">
-            <div class="card-header">
-                Thêm tài xế
+            <div v-if="this.driver._id != null" class="card-header">
+               Cập nhật thông tin tài xế
+            </div>
+            <div v-else class="card-header">
+               Cập nhật thông tin tài xế
             </div>
             <div class="card-body p-5">
                 <div class="mb-3">

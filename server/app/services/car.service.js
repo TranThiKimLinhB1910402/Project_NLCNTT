@@ -75,7 +75,8 @@ class CarService {
         const isExist = await this.Car.findOne({ _id: car._id });
         if (!isExist) {
           const result = await this.Car.insertOne(car);
-          return result.value;
+          console.log(result);
+          return result;
         }
     }
     async find(filter) {

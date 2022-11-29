@@ -24,9 +24,6 @@ import EditDriver from "@/views/Admin/ManagerDriver/EditDriver.vue"
 import ManagerRoute from "@/views/Admin/ManagerRoute/ManagerRoute.vue";
 import AddRoute from "@/views/Admin/ManagerRoute/AddRoute.vue";
 import EditRoute from "@/views/Admin/ManagerRoute/EditRoute.vue";
-
-
-
 const routes = [
     
      { 
@@ -49,11 +46,6 @@ const routes = [
             { path: 'manager-route', name: "manager-route", component: ManagerRoute},
             { path: 'add-route', name:"add-route", component: AddRoute},
             { path: 'manager-route/:id', name:"edit-route", component: EditRoute, props: true},
-
-            
-
-
-            
         ],
     },
     {

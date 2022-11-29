@@ -37,8 +37,8 @@ export default {
             <div class="d-flex justify-content-between">
                 <h4>VUI LÒNG ĐIỀN SỐ ĐIỆN THOẠI VÀO THANH TÌM KIẾM</h4>
             <div class="input-group mb-3 w-50">
-                <input type="text" v-model="this.value" class="form-control" placeholder="Recipient's username"
-                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="text" v-model="this.value" class="form-control" placeholder="Số điện thoại đặt xe"
+                    aria-label="Recipient's username" aria-describedby="button-addon2" required>
                 <button class="btn btn-primary" @click="findByPhone(this.value)" type="button"
                     id="button-addon2">Tìm kiếm</button>
             </div>
